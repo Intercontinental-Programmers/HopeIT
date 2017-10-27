@@ -1,0 +1,27 @@
+{
+  "name": "hopeit",
+  "version": "1.0.0",
+  "description": "App created which goal is to help gathering money for charity. Money is gathered using crypto currency mining and traditional transfers.",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Intercontinental-Programmers/HopeIT.git"
+  },
+  "author": "Intercontinental Programmers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Intercontinental-Programmers/HopeIT/issues"
+  },
+  "homepage": "https://github.com/Intercontinental-Programmers/HopeIT#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.12.4",
+    "nodemon": "^1.12.1"
+  }
+}
