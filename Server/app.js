@@ -8,7 +8,9 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var pagestats = require('./routes/pagestats');
-var pagestats = require('./routes/userstats');
+var userstats = require('./routes/userstats');
+var coinhive = require('./routes/coinhive')
+
 
 var app = express();
 
@@ -28,6 +30,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/pagestats', pagestats);
 app.use('/userstats', userstats);
+app.use('/coinhive', coinhive);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
