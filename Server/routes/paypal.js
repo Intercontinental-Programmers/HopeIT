@@ -6,7 +6,7 @@ var paypal = require('paypal-rest-sdk');
 
 
 
-/* GET home page. */
+/* GET home page. 
 router.get('/:client_id/:client_secret/:total/:currency/:desc', function(req, res, next) {
     var create_payment_json = {
         "intent": "sale",
@@ -51,7 +51,7 @@ router.get('/:client_id/:client_secret/:total/:currency/:desc', function(req, re
         }
         res.json(pmnt);
     });
-});
+}); */
 
 /* POST home page. */
 router.post('/', function(req, res, next) {
@@ -82,6 +82,8 @@ router.post('/', function(req, res, next) {
         }]
     };
 
+    console.log(req.body);
+
     paypal.configure({
         'mode': 'sandbox', //sandbox or live
         'client_id': req.body.client_id,
@@ -90,6 +92,9 @@ router.post('/', function(req, res, next) {
 
     paypal.payment.create(create_payment_json, function (error, pmnt) {
         if (error) {
+            console.log(req.body.client_id);
+            console.log(req.body.client_secret);
+            console.log(error);
             throw error;
         } else {
             console.log("Create Payment Response");
