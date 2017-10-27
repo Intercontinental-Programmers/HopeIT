@@ -71,8 +71,10 @@ export default class LoginScreen extends React.Component {
     );
   }
   _login = () => {
-    // alert(this.state.username + "   " + this.state.password); const {navigate} =
-    // this.props.navigation; navigate('App');
+    const {navigate} = this.props.navigation;
+    
+    navigate('App');
+  
     var data = {
       client_id: "Adt3bLhhhvutjmFRlEyiImUIEEjVPGlxFM_1Do_hQBo-wroVDNrSTtbHUjqyf_dIM8Y1rmEcCQZh6TKa",
       client_secret: "EFJqsYD4cERumo4gOHU79Igdv1DaQnTTAgOgZu1Aob9i8LUYsveEVfDGml7vta7Ux0xJvQpdko1FHWGq",
@@ -84,7 +86,7 @@ export default class LoginScreen extends React.Component {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',}
+        'Content-Type': 'application/json',}
 
       }).then(response => response.json()).then(response => {
         alert(JSON.stringify(response));
@@ -133,7 +135,6 @@ accessibilityLabel="Learn more about this purple button"
       borderWidth: 1,
       borderColor: '#fff',
       overflow: 'hidden',
-      backgroundColor: '#666',
       alignItems: 'center',
       justifyContent: 'center'
     },
