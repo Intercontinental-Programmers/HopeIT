@@ -8,13 +8,12 @@ import Touchable from 'react-native-platform-touchable';
 
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
-    title: 'Donate',
-  };
+    title: 'Donate', header: null };
 
   render() {
     return (
       <WebView
-        source={{ uri: 'https://ssl.dotpay.pl/test_payment/?id=726300&kwota=5.69&opis=Test' }}
+        source={{ uri: 'https://ssl.dotpay.pl/test_payment/?id=726300&kwota=10&opis=Test' }}
         style={{ marginTop: 2 }}
       />
     );
