@@ -25,4 +25,8 @@ mongoClient.connect('mongodb://aditestmucha:testadi@ds237445.mlab.com:37445/hope
     app.get('/', (req, res) =>{
         res.send('Hello World!')
     })
+
+    app.get('/paypal', (req, res) => {
+        
+    })
 })
