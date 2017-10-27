@@ -6,12 +6,16 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 import Colors from '../constants/Colors';
 
 import HomeScreen from '../screens/HomeScreen';
+import LoginScreen from '../screens/LoginScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import DonateScreen from '../screens/DonateScreen';
 
 export default TabNavigator(
   {
+    Home: {
+      screen: HomeScreen
+    },
     Donate: {
       screen: DonateScreen,
     },
