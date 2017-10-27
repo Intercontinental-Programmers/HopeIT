@@ -11,9 +11,6 @@ import SettingsScreen from '../screens/SettingsScreen';
 
 export default TabNavigator(
   {
-    Home: {
-      screen: HomeScreen,
-    },
     Links: {
       screen: LinksScreen,
     },
