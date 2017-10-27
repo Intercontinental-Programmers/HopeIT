@@ -8,9 +8,13 @@ import Colors from '../constants/Colors';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import DonateScreen from '../screens/DonateScreen';
 
 export default TabNavigator(
   {
+    Donate: {
+      screen: DonateScreen,
+    },
     Links: {
       screen: LinksScreen,
     },
@@ -28,6 +32,11 @@ export default TabNavigator(
             iconName = Platform.OS === 'ios'
               ? `ios-information-circle${focused ? '' : '-outline'}`
               : 'md-information-circle';
+            break;
+          case 'Donate':
+            iconName = Platform.OS === 'ios'
+              ? `ios-link${focused ? '' : '-outline'}`
+              : 'md-link';
             break;
           case 'Links':
             iconName = Platform.OS === 'ios'

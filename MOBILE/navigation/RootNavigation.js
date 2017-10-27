@@ -8,8 +8,12 @@ import registerForPushNotificationsAsync from '../api/registerForPushNotificatio
 
 const RootStackNavigator = StackNavigator(
   {
+    
     Main: {
       screen: HomeScreen,
+    },
+    App: {
+      screen: MainTabNavigator,
     },
   },
   {
@@ -22,6 +26,7 @@ const RootStackNavigator = StackNavigator(
 );
 
 export default class RootNavigator extends React.Component {
+  
   componentDidMount() {
     this._notificationSubscription = this._registerForPushNotifications();
   }
