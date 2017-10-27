@@ -14,134 +14,11 @@ export default class LinksScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        <Touchable
-        style={styles.option}
-        background={Touchable.Ripple('#ccc', false)}
-        onPress={this._handleAddWatch}>
-        <View style={{ flexDirection: 'row' }}>
-          <View style={styles.optionIconContainer}>
-            <Image
-              source={require('../assets/images/add2.png')}
-              resizeMode="contain"
-              fadeDuration={0}
-              style={{ width: 96, height: 64, marginTop: 1 }}
-            />
-          </View>
-          <View style={styles.optionTextContainer}>
-            <Text style={styles.optionText}>
-              Watch this advertisement!
-          </Text>
-          </View>
-        </View>
-      </Touchable>
-
-        <Touchable
-        style={styles.option}
-        background={Touchable.Ripple('#ccc', false)}
-        onPress={this._handleAddWatch}>
-        <View style={{ flexDirection: 'row' }}>
-          <View style={styles.optionIconContainer}>
-            <Image
-              source={require('../assets/images/add1.png')}
-              resizeMode="contain"
-              fadeDuration={0}
-              style={{ width: 96, height: 64, marginTop: 1 }}
-            />
-          </View>
-          <View style={styles.optionTextContainer}>
-            <Text style={styles.optionText}>
-            Watch this advertisement!
-          </Text>
-          </View>
-        </View>
-      </Touchable>
-
-        <Touchable
-        style={styles.option}
-        background={Touchable.Ripple('#ccc', false)}
-        onPress={this._handleAddWatch}>
-        <View style={{ flexDirection: 'row' }}>
-          <View style={styles.optionIconContainer}>
-            <Image
-              source={require('../assets/images/add2.png')}
-              resizeMode="contain"
-              fadeDuration={0}
-              style={{ width: 96, height: 64, marginTop: 1 }}
-            />
-          </View>
-          <View style={styles.optionTextContainer}>
-            <Text style={styles.optionText}>
-            Watch this advertisement!
-          </Text>
-          </View>
-        </View>
-      </Touchable>
-
-        <Touchable
-        style={styles.option}
-        background={Touchable.Ripple('#ccc', false)}
-        onPress={this._handleAddWatch}>
-        <View style={{ flexDirection: 'row' }}>
-          <View style={styles.optionIconContainer}>
-            <Image
-              source={require('../assets/images/add1.png')}
-              resizeMode="contain"
-              fadeDuration={0}
-              style={{ width: 96, height: 64, marginTop: 1 }}
-            />
-          </View>
-          <View style={styles.optionTextContainer}>
-            <Text style={styles.optionText}>
-            Watch this advertisement!
-          </Text>
-          </View>
-        </View>
-      </Touchable>
-
-        <Touchable
-          style={styles.option}
-          background={Touchable.Ripple('#ccc', false)}
-          onPress={this._handleAddWatch}>
-          <View style={{ flexDirection: 'row' }}>
-            <View style={styles.optionIconContainer}>
-              <Image
-                source={require('../assets/images/add2.png')}
-                resizeMode="contain"
-                fadeDuration={0}
-                style={{ width: 96, height: 64, marginTop: 1 }}
-              />
-            </View>
-            <View style={styles.optionTextContainer}>
-              <Text style={styles.optionText}>
-              Watch this advertisement!
-            </Text>
-            </View>
-          </View>
-        </Touchable>
-
-        <Touchable
-        style={styles.option}
-        background={Touchable.Ripple('#ccc', false)}
-        onPress={this._handleAddWatch}>
-        <View style={{ flexDirection: 'row' }}>
-          <View style={styles.optionIconContainer}>
-            <Image
-              source={require('../assets/images/add1.png')}
-              resizeMode="contain"
-              fadeDuration={0}
-              style={{ width: 96, height: 64, marginTop: 1 }}
-            />
-          </View>
-          <View style={styles.optionTextContainer}>
-            <Text style={styles.optionText}>
-            Watch this advertisement!
-          </Text>
-          </View>
-        </View>
-      </Touchable>
-
-      </ScrollView>
+      <View style={styles.container}>
+      
+      <Image style={styles.img} source={require('../assets/images/robot-dev.png')}/>
+      
+    </View>
     );
   }
   _handleAddWatch = () => {
@@ -172,4 +49,20 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: '#FFFFFF',
   },
+
+  img: {
+    flexDirection: "column",
+    height: 200,
+    borderRadius: 100,
+    width: 200,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
 });
+
+
+
+
+
+
