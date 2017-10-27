@@ -1,27 +1,50 @@
-const PORT = 6969
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 
-var express = require("express")
-var mongoClient = require("mongodb")
-var bodyParser = require("body-parser")
+var index = require('./routes/index');
+var users = require('./routes/users');
+var pagestats = require('./routes/pagestats');
+var pagestats = require('./routes/userstats');
 
-var app = express()
+var app = express();
 
-app.use(bodyParser.urlencoded({extended : true}))
-app.set("view-engine", "ejs")
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
-var dataBase
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-mongoClient.connect('mongodb://aditestmucha:testadi@ds237445.mlab.com:37445/hopeit-icp', (err, db) => {
-    if(err){
-        console.log('Good evening, something went wrong...')
-    }
+app.use('/', index);
+app.use('/users', users);
+app.use('/pagestats', pagestats);
+app.use('/userstats', userstats);
 
-    dataBase = db
-    app.listen(PORT, () => {
-        console.log("Server is running and established connection with database")
-    })
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
 
-    app.get('/', (req, res) =>{
-        res.send('Hello World!')
-    })
-})
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+module.exports = app;
