@@ -1,21 +1,76 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, Image, Text, View, WebView } from 'react-native';
+import {
+    Modal,
+    Text,
+    View,
+    WebView,
+    TouchableHighlight,
+    Button,
+    Image,
+    StyleSheet,
+} from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import { WebBrowser } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import Touchable from 'react-native-platform-touchable';
 
 
-export default class LinksScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Donate', header: null };
+export default class DonateScreen extends React.Component {
+    static navigationOptions = {
+        title: 'Donate', header: null
+    };
 
-  render() {
-    return (
-      <WebView
-        source={{ uri: 'https://ssl.dotpay.pl/test_payment/?id=726300&kwota=10&opis=Test' }}
-        style={{ marginTop: 2 }}
-      />
-    );
-  }
+    state = {
+        modalVisible: false,
+    }
+
+    setModalVisible(visible) {
+        this.setState({ modalVisible: visible });
+    }
+
+    render() {
+        return (
+            <View style={{ marginTop: 22 }}>
+                <Modal
+                    animationType="slide"
+                    transparent={false}
+                    visible={this.state.modalVisible}
+                    onRequestClose={() => { !this.setModalVisible(false) }}
+                >
+                    <WebView
+                        source={{ uri: 'https://ssl.dotpay.pl/test_payment/?id=726300&kwota=10&opis=Test' }}
+                        style={{ marginTop: 2 }}
+                    />
+
+                    <Button style={styles.comeback}
+                        onPress={() => { !this.setModalVisible(false) }}
+                        title="CLOSE"
+                        color="#BBBBBB"
+                        accessibilityLabel="Learn more about this purple button"
+                    />
+                </Modal>
+
+                <TouchableHighlight onPress={() => { this.setModalVisible(true) }}
+                    style={styles.button}>
+                    <Image
+                        source={require('../assets/images/dotpay.png')}
+                        resizeMode="contain"
+                        fadeDuration={0}
+                        style={{ width: 96, height: 69, marginTop: 1 }}
+                    />
+
+                </TouchableHighlight>
+
+            </View>
+        );
+    }
 }
+
+const styles = StyleSheet.create({
+    button: {
+        alignItems: 'center',
+    },
+    comeback: {
+        height: 30,
+    },
+});
