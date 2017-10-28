@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HopeIT - Helping have never been easier!</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Admin Messages History</h1>
+    <li>
+        <% for(var i=0; i<messages.length; i++) {%>
+        <ul>
+          <b> 
+          <span> <%= messages[i].date %> </span> 
+          <span> <%= messages[i].topic %> </span>
+          </b>
+        </ul>
+    </li>
+  </body>
+</html>
