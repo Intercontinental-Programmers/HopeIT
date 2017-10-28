@@ -23,15 +23,18 @@ router.post('/login', auth.doLogin);
 router.post('/logout', auth.logout);
 
 router.get('/users_list', function(req, res){
-    User.find({}, function(err, users) {
-        var userList = [];
+    console.log(req);
     
-        users.forEach(function(user) {
-          userList.push(user);
+        User.find({}, function(err, users) {
+            var userList = [];
+        
+            users.forEach(function(user) {
+            userList.push(user);
+            });
+        
+            res.render('admin-list-users.ejs', {users : userList});  
         });
     
-        res.render('../views/admin-list-users.ejs', {users : userList});  
-      });
 });
 
 router.get('/messageshistory', function(request, response){
@@ -41,53 +44,64 @@ router.get('/messageshistory', function(request, response){
             messages.forEach(function(message){
                 messagesList.push(message);
             });
-            response.render('../views/admin-list-message.ejs', {'messages': messagesList});
+            response.render('admin-list-message.ejs', {'messages': messagesList});
         });
-    });
+    
+});
 
 router.post('/sendall', function(request, response){
-    User.find({}, function(err, users) {
-        users.forEach(function(user) {
-            var message = new Message({
-                email: user.username,
-                topic: request.body.topic,
-                body: request.body.body,
-                read: false, 
-                //image: { data: Buffer, contentType: String }
+    
+        User.find({}, function(err, users) {
+            users.forEach(function(user) {
+                var message = new Message({
+                    email: user.username,
+                    topic: request.body.topic,
+                    body: request.body.body,
+                    read: false, 
+                    //image: { data: Buffer, contentType: String }
+                });
+                message.save();
             });
-            message.save();
+            response.render('admin-index.ejs', {admin : request.user});
         });
-        response.render('../views/admin-index.ejs', {admin : request.user});
-    });
+    
 });
 router.get('/sendall',function(request, response){
-    response.render('admin-sendall.ejs');
+    
+        response.render('admin-sendall.ejs');
+    
 });
 
 router.get('/send_one_message', function(req, res){
-    User.find({}, function(err, users) {
-        var userList = [];
-    
-        users.forEach(function(user) {
-          userList.push(user);
+
+        if(req.query.username){
+            res.render('admin-one-message-pre.ejs', {select : req.query.username});
+        }
+        User.find({}, function(err, users) {
+            var userList = [];
+        
+            users.forEach(function(user) {
+            userList.push(user);
+            });
+        
+            res.render('admin-one-user-message.ejs', {users : userList});  
         });
     
-        res.render('../views/admin-one-user-message.ejs', {users : userList});  
-      });
 });
 
 router.post('/send_one_message', function(req, res){
-    var message = new Message({
-        email : req.body.username,
-        topic : req.body.topic,
-        body : req.body.body,
-        read : false,
-        //image: { data: Buffer, contentType: String }
-    });
+        var message = new Message({
+            email : req.body.username,
+            topic : req.body.topic,
+            body : req.body.body,
+            read : false,
+            //image: { data: Buffer, contentType: String }
+        });
 
-    message.save();
+        message.save();
 
-    res.redirect('/admin');
+        res.redirect('/admin');
+    
 });
 
 
