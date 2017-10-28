@@ -151,8 +151,8 @@ const styles = StyleSheet.create({
   },
 
   loginTouchSmallLeft: {
-    marginTop: '5%',
-    marginLeft: '30%',
+    
+    marginLeft: '60%',
     padding: '2%',
     width: "30%",
     alignItems: 'center',
@@ -160,11 +160,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: 'rgba(50, 70, 70, 0.7)',
+    position: "absolute"
   },
 
   loginTouchSmallRight: {
-    marginTop: '5%',
-    marginRight: '30%',
+
+    marginRight: '60%',
     padding: '2%',
     width: "30%",
     alignItems: 'center',
@@ -172,6 +173,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: 'rgba(50, 70, 70, 0.7)',
+    position: "absolute"
   },
 
   flexBoxSmall: {
