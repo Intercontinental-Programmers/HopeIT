@@ -23,7 +23,7 @@ export default class LinksScreen extends React.Component {
     return (
       <View style={styles.container}>
 
-        <WebView style={{marginTop: 150}}
+        <WebView style={{marginTop: 120, alignItems: 'center'}}
           javaScriptEnabled={true}
           mixedContentMode="always"
           thirdPartyCookiesEnabled={true}

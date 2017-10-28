@@ -1,25 +1,49 @@
 import React from 'react';
 import { ExpoConfigView } from '@expo/samples';
-import { GiftedChat, Bubble } from 'react-native-gifted-chat';
-import {mail} from '../screens/LoginScreen';
 import {
   Image,
+  Platform,
+  ScrollView,
+  StyleSheet,
   Text,
+  TouchableOpacity,
   View,
+  Button,
+  TextInput,
+  KeyboardAvoidingView,
   ListView,
+  FlatList,
+  RefreshControl
 } from 'react-native';
+import { mail } from '../screens/LoginScreen';
 
+var s = new Set();
 export default class SettingsScreen extends React.Component {
-  static navigationOptions = { title: 'History', header: null };
+  static navigationOptions = {
+    title: 'History',
+    header: null
+  };
 
-
-
-  constructor() {
-    super();
-    data = {
-      user : mail,
+  constructor(props) {
+    super(props);
+    this.state = {
+      refreshing: false,
+      id: "",
+      name: "das",
+      key: [
+        {
+          key: ""
+        }
+      ]
     }
-    
+
+    data = {
+      user: mail
+    }
+
+  }
+  rere = () => {
+    var temp = [];
     fetch('http://207.154.221.96:3000/transactions', {
       method: 'POST',
       body: JSON.stringify(data),
@@ -30,76 +54,61 @@ export default class SettingsScreen extends React.Component {
     })
       .then(response => response.json())
       .then(response => {
-        alert(JSON.stringify(response));
+        for (res in response) {
+          temp.push({
+            key: "" +
+            response[res].payer.status + "\n" + response[res].transactions[0].amount.total + " " + response[res].transactions[0].amount.currency + " " + response[res].create_time
+          });
+        }
+
+        //alert(JSON.stringify(response));
+
+        this.setState({ key: temp });
+
       })
       .done();
-
-
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.state = {
-      dataSource: ds.cloneWithRows(['row 1', 'row 2']),
-    };
+    this.setState({ refreshing: false })
   }
 
-state = {
-        messages: [],
-    };
+  render() {
+    return (
 
-    componentWillMount() {
-        this.setState({
-            messages: [
-                {
-                    _id: 1,
-                    text: 'Hello developer',
-                    createdAt: new Date(),
-                    user: {
-                        _id: 2,
-                        name: 'React Native',
-                        avatar: require('../assets/images/logo.png'),
-                    },
-                },
-            ],
-        });
-    }
-
-    onSend(messages = []) {
-        this.setState((previousState) => ({
-            messages: GiftedChat.append(previousState.messages, messages),
-        }));
-    }
-
-    renderBubble(props) { return ( <Bubble {...props} 
-        
-                        textStyle={{
-                            left: {
-                                color: 'white',
-                            }
-                        }}
-                        wrapperStyle={{
-                            left: {
-                                backgroundColor: '#2b4875',
-                                width: '98%',
-                            },
-                        }}
-                    />
-                );
-            }
-
-    render() {
-        return (
-            <GiftedChat
-                renderInputToolbar={() => null}
-                renderComposer={() => null}
-                minInputToolbarHeight={0}
-                renderAvatar={null}
-                messages={this.state.messages}
-                onSend={(messages) => this.onSend(messages)}
-                user={{
-                    _id: 1,
-
-                }}
-                renderBubble={this.renderBubble.bind(this)}
-            />
-        );
-    }
+      <View style={styles.container}>
+        <FlatList
+          data={this.state.key}
+          title={this.state.key}
+          refreshing={false}
+          onRefresh={this.rere}
+          renderItem={({ item }) => <Text style={styles.text}>{item.key}</Text>}
+        />
+      </View>
+    );
+  }
 }
+
+const styles = StyleSheet.create({
+
+  container: {
+    flex: 0.9,
+    flexDirection: "column",
+    alignItems: 'center',
+
+  },
+  text: {
+    color: 'white',
+    width: "100%",
+    fontSize: 20,
+    padding: 30,
+    marginTop: 5,
+    borderColor: "black",
+    borderWidth: 1,
+    backgroundColor: '#2b4875',
+    alignItems: 'center',
+  },
+  tetxt: {
+
+    width: "100%",
+    backgroundColor: 'rgb(197, 216, 247)',
+  }
+
+});

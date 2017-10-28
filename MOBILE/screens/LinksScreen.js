@@ -165,6 +165,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#EDEDED',
   },
   optionText: {
+    fontWeight: 'bold',
     paddingHorizontal: 50,
     paddingVertical: 23,
     borderBottomWidth: StyleSheet.hairlineWidth,
