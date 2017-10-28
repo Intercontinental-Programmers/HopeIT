@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HopeIT - Helping have never been easier!</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Admin Home Page</h1>
+    <p>Welcome <%= admin.firstname %> <%= admin.surname%> (<%= admin.username%>)</p>
+    <form action="/admin/logout" method="post">
+        <input type="submit" value="Wyloguj!">
+      </form>
+  </body>
+</html>
