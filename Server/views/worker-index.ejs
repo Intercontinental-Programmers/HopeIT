@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HopeIT - Helping have never been easier!</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Worker Home Page</h1>
+    <p>Welcome <%= worker.firstname %> <%= worker.surname%> (<%= worker.username%>)</p>
+    <form action="/worker/logout" method="post">
+        <input type="submit" value="Wyloguj!">
+    </form>
+    <p>
+    Send messages
+    </p>
+  </body>
+</html>

@@ -35,14 +35,14 @@ adminController.login = function(req, res){
 
 adminController.doLogin = function(req, res) {
     passport.authenticate('local')(req, res, function () {
-        console.log('Zalogowano');
+      console.log('Zalogowano');
       res.redirect('/admin');
     });
   };
 
 adminController.logout = function(req, res) {
     req.logout();
-    res.redirect('/admin');
+    res.redirect('/admin/login');
   };
 
 module.exports = adminController;
