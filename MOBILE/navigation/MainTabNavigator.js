@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { TabNavigator, TabBarBottom } from 'react-navigation';
 
 import Colors from '../constants/Colors';
@@ -34,13 +34,13 @@ export default TabNavigator(
         switch (routeName) {
           case 'Home':
             iconName = Platform.OS === 'ios'
-              ? `ios-information-circle${focused ? '' : '-outline'}`
-              : 'md-information-circle';
+              ? `ios-home${focused ? '' : '-outline'}`
+              : 'md-home';
             break;
           case 'Donate':
             iconName = Platform.OS === 'ios'
-              ? `ios-link${focused ? '' : '-outline'}`
-              : 'md-link';
+              ? `ios-cash${focused ? '' : '-outline'}`
+              : 'md-cash';
             break;
           case 'Links':
             iconName = Platform.OS === 'ios'
@@ -66,5 +66,15 @@ export default TabNavigator(
     tabBarPosition: 'top',
     animationEnabled: true,
     swipeEnabled: true,
+    tabBarOptions: {
+      activeTintColor: '#ffffff',
+      labelStyle: {
+        fontSize: 12,
+      },
+      style: {
+        backgroundColor: '#2b4875',
+      },
+    }
+    
   }
 );
