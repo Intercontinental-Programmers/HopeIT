@@ -10,11 +10,8 @@ userController.home = function(req, res){
 };
 
 userController.doRegister = function(req, res){
-    var obj = req.body;
-    var receivedData = Object.keys(obj)[0];
-    var inputData = JSON.parse(receivedData);
-    User.register(new User({username : inputData.username, firstname : firstname, surname : inputData.secondname,
-                            nickname : inputData.nick, }), inputData.password, function(err, user){
+    User.register(new User({username : req.body.username, firstname : req.body.firstname, surname : req.body.surname,
+                            nickname : req.body.nick, }), req.body.password, function(err, user){
                                 if(err){
                                     console.log(err);
                                     return res.json({register : false});
@@ -26,9 +23,10 @@ userController.doRegister = function(req, res){
 };
 
 userController.doLogin = function(req, res){
-    passport.authenticate('local'(req, res), function(){
+    console.log(req.body);
+    passport.authenticate('user')(req, res, function(){
         console.log('Zalogowano');
-        res.redirect('/user');
+        res.json(req.user);
     });
 }
 

@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 var Admin = require('./models/admin');
+var User = require('./models/user');
 var index = require('./routes/index');
 var user = require('./routes/user');
 var paypal = require('./routes/paypal');
@@ -37,6 +38,10 @@ saveUninitialized: false
 passport.use(new LocalStrategy(Admin.authenticate()));
 passport.serializeUser(Admin.serializeUser());
 passport.deserializeUser(Admin.deserializeUser());
+
+passport.use(('user'),new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use(passport.initialize());
 app.use(passport.session());

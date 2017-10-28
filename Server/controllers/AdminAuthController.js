@@ -34,6 +34,7 @@ adminController.login = function(req, res){
 };
 
 adminController.doLogin = function(req, res) {
+    console.log(req.body);
     passport.authenticate('local')(req, res, function () {
         console.log('Zalogowano');
       res.redirect('/admin');
