@@ -9,17 +9,19 @@ var listPayment = {
 
 // Emulate logged user
 
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
     var user = {
         email : req.body.user,
     }
+
+    console.log(req.body.user);
 
     paypal.payment.list(listPayment, function (error, payments) {
         if (error) {
             throw error;
         } else {
             console.log("List Payments Response");
-            console.log(JSON.stringify(payments));
+           // console.log(JSON.stringify(payments));
 
             let filtered_by_user = [];
             for(payment_no in payments.payments) {
@@ -31,6 +33,7 @@ router.get('/', function(req, res, next) {
                 }
             }
 
+            console.log(filtered_by_user);
 
             res.json(filtered_by_user);
         }
