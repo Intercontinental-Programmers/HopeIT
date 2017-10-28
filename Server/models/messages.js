@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-//var bcrypt = require('bcrypt');
 
 var messageSchema = new mongoose.Schema({
     email: String,
@@ -7,7 +6,7 @@ var messageSchema = new mongoose.Schema({
     body: String,
     read: Boolean, 
     date: Date,
-    image: { data: Buffer, contentType: String }
+    //image: { data: Buffer, contentType: String }
 });
 
 

@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var auth = require('../controllers/AdminAuthController');
 var Worker = require('../models/worker.js');
+var Message = require('../models/messages.js');
+var User = require('../models/user.js')
 
 //route to home page
 router.get('/', auth.home);
@@ -34,8 +36,17 @@ router.post('/logout', auth.logout);
 //         respond.redirect('/admin');
 //     });
 // });
+router.get('/messageshistory', function(request, response){
 
-router.post('/sendall', function(request, respond){
+    Message.find({}, function(err, messages){
+        var messagesList = [];
+        messages.forEach(function(message){
+            messagesList.push(message);
+        });
+        response.render('../views/admin-list-message.ejs', {'messages': messagesList});
+    });
+});
+router.post('/sendall', function(request, response){
     User.find({}, function(err, users) {
         users.forEach(function(user) {
             var message = new Message({
@@ -44,18 +55,16 @@ router.post('/sendall', function(request, respond){
                 body: request.body.body,
                 read: false, 
                 date: Date.now,
-                image: { data: Buffer, contentType: String }
+                //image: { data: Buffer, contentType: String }
             });
-            worker.save(function(err, u) {
-                if (err) return next(err);
-                console.log('Added message')
-                return render('../views/massagessent.ejs');
-            });
+            message.save();
         });
-        res.render();  
-      });
-    
+        response.render('../views/admin-index.ejs');
+    });
 });
+router.get('/sendall',function(request, response){
+    response.render('admin-sendall.ejs');
+})
 
 router.post('/sendselect', function(request, respond){
     var message = new Message({
