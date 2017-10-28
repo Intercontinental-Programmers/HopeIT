@@ -12,7 +12,7 @@ router.post('/logout', auth.logout);
 router.get('/', auth.home);
 
 router.post('/get_messages', function(req, res){
-    console.log(req);
+    console.log(req.body);
         Message.find({email : req.body.username}, function(err, msgs){
             var messageList = [];
 
