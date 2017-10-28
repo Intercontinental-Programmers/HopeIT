@@ -35,7 +35,7 @@ export default class LoginScreen extends React.Component {
     return (
 
       <KeyboardAvoidingView behavior="position" style={styles.container}>
-        <View style={styles.container}>
+       
           <Image style={styles.img} source={require('../assets/images/logo.png')}/>
 
           <View style={styles.flexBox1}>
@@ -63,16 +63,35 @@ export default class LoginScreen extends React.Component {
               </Text>
 
             </TouchableOpacity>
+            </View>
+            
+            <View style={styles.flexBox2}>
+              <TouchableOpacity style={styles.loginTouch2} onPress={this._login}>
+                <Text style={styles.loginButton2}>
+                  Forget 
+                </Text>
 
-          </View>
+              </TouchableOpacity>
+               <TouchableOpacity style={styles.loginTouch2} onPress={this._login}>
+                <Text style={styles.loginButton2}>
+                  Register
+                </Text>
 
-        </View>
+              </TouchableOpacity>
+
+            </View>
+            
+        
+
+     
       </KeyboardAvoidingView>
     );
   }
   _login = () => {
     // alert(this.state.username + "   " + this.state.password); const {navigate} =
-    // this.props.navigation; navigate('App');
+    const {navigate} = this.props.navigation;
+    navigate('App');
+
     var data = {
       client_id: "Adt3bLhhhvutjmFRlEyiImUIEEjVPGlxFM_1Do_hQBo-wroVDNrSTtbHUjqyf_dIM8Y1rmEcCQZh6TKa",
       client_secret: "EFJqsYD4cERumo4gOHU79Igdv1DaQnTTAgOgZu1Aob9i8LUYsveEVfDGml7vta7Ux0xJvQpdko1FHWGq",
@@ -80,75 +99,90 @@ export default class LoginScreen extends React.Component {
       currency: "PLN",
       desc: "hurr durr"
     }
+    console.log(JSON.stringify(data));
     fetch('http://207.154.221.96:3000/paypal', {
       method: 'POST',
       body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',}
+        headers: {
+          'Content-Type': 'application/json'
+        }
 
-      }).then(response => response.json()).then(response => {
-        alert(JSON.stringify(response));
-      }).done();}
+      })
+      .then(response => response.json())
+      .then(response => {
+        alert(JSON.stringify(response.id));
+      })
+      .done();
   }
-
-  /* <View>
-<Button
-onPress={() =>
-navigate('App')
 }
-title="Login"
-color="#841584"
-accessibilityLabel="Learn more about this purple button"
-/> */
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      backgroundColor: 'rgb(43, 72, 117)'
-    },
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: 'rgb(43, 72, 117)',
+   
+  },
 
-    flexBox1: {
-      flex: 0.95,
-      //marginTop: '40%',
-      width: "95%",
-      flexDirection: "column",
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
-    form: {
-      height: '20%',
-      width: '100%',
-      padding: '0.5%',
-      textAlign: 'center',
-      color: 'rgba(232, 238, 250, 0.7)',
-      backgroundColor: 'rgba(232, 238, 247, 0.4)'
-    },
-    img: {
-      flexDirection: "column",
-      height: 300,
-      borderRadius: 150,
-      width: 300,
-      marginTop: '25%',
-      borderWidth: 1,
-      borderColor: '#fff',
-      overflow: 'hidden',
-      backgroundColor: '#666',
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
+  flexBox1: {
+    flex: 12,
+    flexDirection: "column",
+    alignItems: 'center',
+    
+  },
 
-    loginTouch: {
-      width: '100%',
-      height: '20%',
-      padding: '1%',
-      backgroundColor: 'rgb(45, 88, 155)'
-    },
-    loginButton: {
-      marginTop: 10,
-      fontSize: 20,
-      textAlign: 'center',
-      color: '#eee',
-      fontWeight: 'bold'
-    }
-  });
+  flexBox2: {
+    position: "absolute",
+    bottom:"6.5%",
+    width: "100%",
+    
+    flexDirection: "row",
+    alignItems: "center",
+   
+    
+  },
+  form: {
+    height: '20%',
+    width: '100%',
+    padding: '0.5%',
+    textAlign: 'center',
+    color: 'rgba(232, 238, 250, 0.7)',
+    backgroundColor: 'rgba(232, 238, 247, 0.4)'
+  },
+  img: {
+
+    height: 300,
+    borderRadius: 150,
+    width: 300,
+    marginTop: '15%',
+    marginBottom: '5%',
+    borderWidth: 1,
+    borderColor: '#fff',
+    overflow: 'hidden',
+  },
+
+  loginTouch: {
+    width: '100%',
+    padding: '1%',
+    marginTop: '6%',
+    backgroundColor: 'rgb(45, 88, 155)'
+  },
+  loginTouch2: {
+    width: "40%",
+    borderColor: 'rgb(43,72,117)',
+    borderWidth:1,
+    backgroundColor: 'rgb(45, 88, 155)'
+  },
+  loginButton: {
+    fontSize: 30,
+    textAlign: 'center',
+    color: '#eee',
+    fontWeight: 'bold'
+  },
+  loginButton2: {
+    fontSize: 15,
+    textAlign: 'center',
+    color: '#eee',
+
+  }
+});
