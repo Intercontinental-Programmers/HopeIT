@@ -10,7 +10,7 @@ mongoose.Promise = global.Promise;
 
 var Admin = require('./models/admin');
 var index = require('./routes/index');
-var users = require('./routes/users');
+var user = require('./routes/user');
 var paypal = require('./routes/paypal');
 var proces = require('./routes/process');
 //var pagestats = require('./routes/pagestats');
@@ -54,7 +54,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/user', user);
 //app.use('/pagestats', pagestats);
 //app.use('/userstats', userstats);
 app.use('/coinhive', coinhive);
