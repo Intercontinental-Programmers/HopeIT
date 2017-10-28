@@ -22,7 +22,7 @@ router.post('/get_messages', function(req, res){
 
             console.log(messageList);
 
-            res.json(messageList);
+            res.json(messageList.body);
 
         });
 });
