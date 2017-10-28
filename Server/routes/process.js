@@ -15,10 +15,7 @@ router.get('/', function(req, res, next) {
       } else {
         if (payment.state == 'approved'){
           console.log('payment completed successfully');
-          res.json({
-              payment_status : 200,
-              payment_msg : "success"
-          });
+          res.render('process', {});
         } else {
           console.log('payment failed');
           res.json({
