@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Wyślij wiadmość:</h1>
-<form action="/admin/send-one-message" method="post">
+<form action="/admin/send_one_message" method="post">
     <b>Uzytkownik: </b>
   <select name="username">
   <% for(var i=0; i<users.length; i++) {%>
@@ -14,7 +14,7 @@
   <% } %>
   </select><br> <br>
   <b>Temat: </b> <input type="text" name="topic"></input><br><br>
-  <textarea name="message-text" style="width:400px; height:200px" placeholder="Twoja wiadomość...">
+  <textarea name="body" style="width:400px; height:200px">
   </textarea><br>
   <input type="submit" value="Wyślij!">
 </form>

@@ -64,15 +64,6 @@ router.get('/sendall',function(request, response){
     response.render('admin-sendall.ejs');
 });
 
-router.post('/sendselect', function(request, respond){
-    var message = new Message({
-        username: String,
-        firstname: String,
-        surname : String,
-        password: String,
-    });
-})
-
 router.get('/send_one_message', function(req, res){
     User.find({}, function(err, users) {
         var userList = [];
@@ -85,9 +76,20 @@ router.get('/send_one_message', function(req, res){
       });
 });
 
-router.post('/send-one-message', function(req, res){
+router.post('/send_one_message', function(req, res){
+    var message = new Message({
+        email : req.body.username,
+        topic : req.body.topic,
+        body : req.body.body,
+        read : false,
+        //image: { data: Buffer, contentType: String }
+    });
 
+    message.save();
+
+    res.redirect('/admin');
 });
+
 
 
 
