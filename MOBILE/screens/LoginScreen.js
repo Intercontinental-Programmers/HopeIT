@@ -38,7 +38,7 @@ export default class LoginScreen extends React.Component {
 
         <Image style={styles.img} source={require('../assets/images/logo.png')} />
 
-        <View style={styles.flexBox1}>
+        <View style={styles.flexBox}>
 
           <TextInput
             style={styles.form}
@@ -64,18 +64,16 @@ export default class LoginScreen extends React.Component {
               </Text>
 
           </TouchableOpacity>
-        </View>
 
-        <View style={styles.flexBoxSmall}>
-          <TouchableOpacity style={styles.loginTouchSmall} onPress={this._login}>
-            <Text style={styles.loginButtonSecond}>
-              Forget
-                </Text>
-
-          </TouchableOpacity>
           <TouchableOpacity style={styles.loginTouchSmall} onPress={this._toRegistry}>
             <Text style={styles.loginButtonSecond}>
               Register
+                </Text>
+
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.loginTouchSmall} onPress={this._login}>
+            <Text style={styles.loginButtonSecond}>
+              Guest
                 </Text>
 
           </TouchableOpacity>
@@ -101,19 +99,19 @@ export default class LoginScreen extends React.Component {
       desc: "hurr durr"
     }
     console.log(JSON.stringify(data));
-    // fetch('http://207.154.221.96:3000/paypal', {
-    //   method: 'POST',
-    //   body: JSON.stringify(data),
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     }
+    fetch('http://207.154.221.96:3000/paypal', {
+      method: 'POST',
+      body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
 
-    //   })
-    //   .then(response => response.json())
-    //   .then(response => {
-    //     alert(JSON.stringify(response.id));
-    //   })
-    //   .done();
+      })
+      .then(response => response.json())
+      .then(response => {
+        alert(JSON.stringify(response.id));
+      })
+      .done();
   }
 
   _toRegistry = () => {
@@ -132,7 +130,7 @@ const styles = StyleSheet.create({
     shadowRadius: 20,
   },
 
-  flexBox1: {
+  flexBox: {
     flex: 1,
     flexDirection: "column",
     alignItems: 'center',
@@ -141,14 +139,12 @@ const styles = StyleSheet.create({
 
   flexBoxSmall: {
     position: "absolute",
-    bottom: "6.5%",
     width: "100%",
-
-    flexDirection: "row",
+    flex: 1,
+    flexDirection: "column",
     alignItems: "center",
-
-
   },
+
   form: {
 
     padding: '2%',
@@ -178,8 +174,7 @@ const styles = StyleSheet.create({
     padding: '2%',
     width: "100%",
     alignItems: 'center',
-    color: '#FFFFFF',
-    backgroundColor: 'rgb(45, 88, 155)',
+    backgroundColor: '#1F305A',
     borderRadius: 10,
     borderWidth: 1,
     borderColor: 'rgba(50, 70, 70, 0.7)',
@@ -187,38 +182,26 @@ const styles = StyleSheet.create({
   },
 
   loginTouchSmall: {
-
+    marginTop: 13,
     padding: '2%',
-    width: "100%",
+    width: "30%",
     alignItems: 'center',
-    color: '#ffffff',
-    backgroundColor: 'rgb(45, 88, 155)',
+    backgroundColor: '#1F305A',
     borderRadius: 10,
     borderWidth: 1,
     borderColor: 'rgba(50, 70, 70, 0.7)',
-
   },
 
-  loginTouchSmall: {
-    padding: '2%',
-    width: "40%",
-    alignItems: 'center',
-    color: '#ffffff',
-    backgroundColor: 'rgb(45, 88, 155)',
-    borderRadius: 10,
-    borderColor: 'rgba(50, 70, 70, 0.7)',
-    borderWidth: 1,
-  },
   loginButtonFirst: {
     fontSize: 30,
     textAlign: 'center',
-    color: '#eee',
+    color: '#fff',
     fontWeight: 'bold'
   },
   loginButtonSecond: {
     fontSize: 15,
     textAlign: 'center',
-    color: '#eee',
+    color: '#fff',
 
   }
 });
