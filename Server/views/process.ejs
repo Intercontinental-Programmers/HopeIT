@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Error</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+  </head>
+  <body>
+    
+      <% if(error) { %>
+        <pre><h1>We're sorry, but this transaction failed (probably a finished payment).</h1></pre>
+      <% } else { %>
+         <h1><i style="font-size: 20em;" class="fa fa-th-large fa-thumbs-up" aria-hidden="true"></i></h1>
+        <h1>Dziękujemy za twoje wsparcie!</h1>
+      <% } %>   
+   
+
+  </body>
+</html>
