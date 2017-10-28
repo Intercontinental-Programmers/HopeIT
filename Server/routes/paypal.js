@@ -13,7 +13,7 @@ paypal.configure({
     'client_secret': "ENWRgP6Y2dRzoPgwTDWoW1vQ_oMnoBnv-rmdKawA7k0hRmNNA9YFOLOzAGp5WXLh1ZTwApMzN40WPqYw",
 });
 
-/* POST home page. */
+/* POST home page. 
 router.post('/', function(req, res, next) {
     // Build PayPal payment request
     var payReq = JSON.stringify({
@@ -54,6 +54,54 @@ router.post('/', function(req, res, next) {
           // If redirect url present, redirect user
           if (links.hasOwnProperty('approval_url')){
             res.send(links['approval_url'].href);
+          } else {
+            console.error('no redirect URI present');
+          }
+        }
+    });
+}); */
+
+/* POST home page. */
+router.get('/:total/:currency', function(req, res, next) {
+    // Build PayPal payment request
+    var payReq = JSON.stringify({
+        intent:'sale',
+        payer:{
+          payment_method:'paypal'
+        },
+        redirect_urls:{
+          return_url:'http://207.154.221.96:3000/process',
+          cancel_url:'http://207.154.221.96:3000/cancel'
+        },
+        transactions:[{
+          amount:{
+            total: req.params.total,
+            currency: req.params.currency
+          },
+          description:'This is the payment transaction description.'
+        }]
+      });
+
+    console.log(req.params);
+
+    paypal.payment.create(payReq, function(error, payment){
+        var links = {};
+      
+        if(error){
+          console.error(JSON.stringify(error));
+        } else {
+          // Capture HATEOAS links
+          payment.links.forEach(function(linkObj){
+            links[linkObj.rel] = {
+              href: linkObj.href,
+              method: linkObj.method
+            };
+            console.log(linkObj);
+          })
+      
+          // If redirect url present, redirect user
+          if (links.hasOwnProperty('approval_url')){
+            res.redirect(links['approval_url'].href);
           } else {
             console.error('no redirect URI present');
           }
