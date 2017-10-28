@@ -8,11 +8,11 @@ var listPayment = {
 };
 
 // Emulate logged user
-var user = {
-    email : "darczynca@gmail.com",
-}
 
 router.get('/', function(req, res, next) {
+    var user = {
+        email : req.body.user.username,
+    }
 
     paypal.payment.list(listPayment, function (error, payments) {
         if (error) {
