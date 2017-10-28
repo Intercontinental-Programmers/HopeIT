@@ -11,7 +11,7 @@ var listPayment = {
 
 router.get('/', function(req, res, next) {
     var user = {
-        email : req.body.user.username,
+        email : req.body.user,
     }
 
     paypal.payment.list(listPayment, function (error, payments) {
