@@ -31,22 +31,16 @@
             <% for(var i=0; i<messages.length; i++) {%>
               <div class="card" style="padding: 0px; margin: 15px">
                   <div style="padding-left: 20px; border-bottom: 5px solid #01579b; margin-top: 25px; padding-top: 10px; padding-bottom:10px">
-                      <h4>Temat: <%= messages[i].topic %></h4>
+                      <h5>Temat: <%= messages[i].topic %></h5>
+                      <b>Do: <%= messages[i].email %></b><br>
+                      <b style="color: #757575">Wysłano dnia: <%= messages[i].date %></b>
+                  </div>
+                  <div style="padding: 25px">
+                        <span style="font-size: 18px"> <%= messages[i].body %> </span> 
                   </div>
               </div>
             <%}%>
             </div>
         </main>
-    <h1>Admin Messages History</h1>
-    <ul>
-        <% for(var i=0; i<messages.length; i++) {%>
-        <li>
-          <b> 
-          <span> <%= messages[i].date %> </span> 
-          <span> <%= messages[i].topic %> </span>
-          </b>
-        </li>
-        <%}%>
-      </ul>
   </body>
 </html>
