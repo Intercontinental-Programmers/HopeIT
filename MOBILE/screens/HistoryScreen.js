@@ -1,22 +1,18 @@
 import React from 'react';
 import { ExpoConfigView } from '@expo/samples';
+import { GiftedChat, Bubble } from 'react-native-gifted-chat';
+import {mail} from '../screens/LoginScreen';
 import {
   Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
   Text,
-  TouchableOpacity,
   View,
-  Button,
-  TextInput,
-  KeyboardAvoidingView,
-  ListView
+  ListView,
 } from 'react-native';
-import {mail} from '../screens/LoginScreen';
 
 export default class SettingsScreen extends React.Component {
   static navigationOptions = { title: 'History', header: null };
+
+
 
   constructor() {
     super();
@@ -45,12 +41,65 @@ export default class SettingsScreen extends React.Component {
     };
   }
 
-  render() {
-    return (
-      <ListView
-        dataSource={this.state.dataSource}
-        renderRow={(rowData) => <Text>{rowData}</Text>}
-      />
-    );
-  }
+state = {
+        messages: [],
+    };
+
+    componentWillMount() {
+        this.setState({
+            messages: [
+                {
+                    _id: 1,
+                    text: 'Hello developer',
+                    createdAt: new Date(),
+                    user: {
+                        _id: 2,
+                        name: 'React Native',
+                        avatar: require('../assets/images/logo.png'),
+                    },
+                },
+            ],
+        });
+    }
+
+    onSend(messages = []) {
+        this.setState((previousState) => ({
+            messages: GiftedChat.append(previousState.messages, messages),
+        }));
+    }
+
+    renderBubble(props) { return ( <Bubble {...props} 
+        
+                        textStyle={{
+                            left: {
+                                color: 'white',
+                            }
+                        }}
+                        wrapperStyle={{
+                            left: {
+                                backgroundColor: '#2b4875',
+                                width: '98%',
+                            },
+                        }}
+                    />
+                );
+            }
+
+    render() {
+        return (
+            <GiftedChat
+                renderInputToolbar={() => null}
+                renderComposer={() => null}
+                minInputToolbarHeight={0}
+                renderAvatar={null}
+                messages={this.state.messages}
+                onSend={(messages) => this.onSend(messages)}
+                user={{
+                    _id: 1,
+
+                }}
+                renderBubble={this.renderBubble.bind(this)}
+            />
+        );
+    }
 }
