@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="PL">
+<head>
+  <meta charset="UTF-8">
+  <title>HopeIT - Helping have never been easier!</title>
+</head>
+<body>
+    <h1>Users List</h1>
+
+  <ul class="quotes">
+  <% for(var i=0; i<users.length; i++) {%>
+    <li class="user">
+      <b><span><%= users[i].firstname %>:</span></b>
+      <span><%= users[i].surname %></span>
+      <span> (<%= users[i].username %>)</span>
+    </li>
+  <% } %>
+  </ul>
+
+</body>
+</html>
