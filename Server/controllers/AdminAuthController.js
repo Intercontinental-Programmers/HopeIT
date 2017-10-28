@@ -7,7 +7,7 @@ var adminController = {};
 adminController.home = function(req, res) {
     if(req.user)
         res.render('../views/admin-index.ejs', {admin : req.user});
-    res.send('Trzeba się zalogować');
+    res.redirect('/admin/login');
 };
 
 adminController.register = function(req, res) {
