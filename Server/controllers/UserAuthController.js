@@ -10,8 +10,11 @@ userController.home = function(req, res){
 };
 
 userController.doRegister = function(req, res){
-    User.register(new User({username : username, firstname : firstname, surname : secondname,
-                            nickname : nick, }), password, function(err, user){
+    var obj = req.body;
+    var receivedData = Object.keys(obj)[0];
+    var inputData = JSON.parse(receivedData);
+    User.register(new User({username : inputData.username, firstname : firstname, surname : inputData.secondname,
+                            nickname : inputData.nick, }), inputData.password, function(err, user){
                                 if(err){
                                     console.log(err);
                                     return res.json({register : 'fail'});
