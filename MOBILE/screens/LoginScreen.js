@@ -65,21 +65,23 @@ export default class LoginScreen extends React.Component {
 
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.loginTouchSmall} onPress={this._toRegistry}>
-            <Text style={styles.loginButtonSecond}>
+          <View style={styles.flexBoxSmall}>
+
+          <TouchableOpacity style={styles.loginTouchSmallLeft} onPress={this._toRegistry}>
+            <Text style={styles.loginButtonSmall}>
               Register
                 </Text>
 
           </TouchableOpacity>
-          <TouchableOpacity style={styles.loginTouchSmall} onPress={this._login}>
-            <Text style={styles.loginButtonSecond}>
+          <TouchableOpacity style={styles.loginTouchSmallRight} onPress={this._login}>
+            <Text style={styles.loginButtonSmall}>
               Guest
                 </Text>
 
           </TouchableOpacity>
 
         </View>
-
+</View>
 
 
 
@@ -134,14 +136,37 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     alignItems: 'center',
+  },
 
+  loginTouchSmallLeft: {
+    marginTop: '5%',
+    marginLeft: '30%',
+    padding: '2%',
+    width: "30%",
+    alignItems: 'center',
+    backgroundColor: '#1F305A',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'rgba(50, 70, 70, 0.7)',
+  },
+
+  loginTouchSmallRight: {
+    marginTop: '5%',
+    marginRight: '30%',
+    padding: '2%',
+    width: "30%",
+    alignItems: 'center',
+    backgroundColor: '#1F305A',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'rgba(50, 70, 70, 0.7)',
   },
 
   flexBoxSmall: {
     position: "absolute",
+    bottom:"6.5%",
     width: "100%",
-    flex: 1,
-    flexDirection: "column",
+    flexDirection: "row",
     alignItems: "center",
   },
 
@@ -162,7 +187,7 @@ const styles = StyleSheet.create({
     height: 300,
     borderRadius: 150,
     width: 300,
-    marginTop: '15%',
+    marginTop: '5%',
     marginBottom: '5%',
     borderWidth: 1,
     borderColor: '#fff',
@@ -181,27 +206,16 @@ const styles = StyleSheet.create({
 
   },
 
-  loginTouchSmall: {
-    marginTop: 13,
-    padding: '2%',
-    width: "30%",
-    alignItems: 'center',
-    backgroundColor: '#1F305A',
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: 'rgba(50, 70, 70, 0.7)',
-  },
-
   loginButtonFirst: {
     fontSize: 30,
     textAlign: 'center',
     color: '#fff',
     fontWeight: 'bold'
   },
-  loginButtonSecond: {
+  
+  loginButtonSmall: {
     fontSize: 15,
     textAlign: 'center',
     color: '#fff',
-
   }
 });
