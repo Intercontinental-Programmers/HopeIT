@@ -11,9 +11,9 @@ import {
   TextInput,
   KeyboardAvoidingView
 } from 'react-native';
-import {WebBrowser} from 'expo';
+import { WebBrowser } from 'expo';
 import RootNavigation from '../navigation/RootNavigation';
-import {StackNavigator} from 'react-navigation';
+import { StackNavigator } from 'react-navigation';
 
 export default class LoginScreen extends React.Component {
 
@@ -35,61 +35,62 @@ export default class LoginScreen extends React.Component {
     return (
 
       <KeyboardAvoidingView behavior="position" style={styles.container}>
-       
-          <Image style={styles.img} source={require('../assets/images/logo.png')}/>
 
-          <View style={styles.flexBox1}>
+        <Image style={styles.img} source={require('../assets/images/logo.png')} />
 
-            <TextInput
-              style={styles.form}
-              placeholder="username"
-              returnKeyType="go"
-              onChangeText={(username) => this.setState({username})}
-              value={this.state.username}/>
-            <TextInput/>
+        <View style={styles.flexBox1}>
 
-            <TextInput
-              style={styles.form}
-              secureTextEntry={true}
-              placeholder="password"
-              returnKeyType="go"
-              onChangeText={(password) => this.setState({password})}
-              value={this.state.password}/>
-            <TextInput/>
+          <TextInput
+            style={styles.form}
+            secureTextEntry={true}
+            placeholder="username"
+            returnKeyType="go"
+            onChangeText={(username) => this.setState({ username })}
+            value={this.state.password} />
+          <TextInput />
 
-            <TouchableOpacity style={styles.loginTouch} onPress={this._login}>
-              <Text style={styles.loginButton}>
-                Login
+          <TextInput
+            style={styles.form}
+            secureTextEntry={true}
+            placeholder="password"
+            returnKeyType="go"
+            onChangeText={(password) => this.setState({ password })}
+            value={this.state.password} />
+          <TextInput />
+
+          <TouchableOpacity style={styles.loginTouch} onPress={this._login}>
+            <Text style={styles.loginButtonFirst}>
+              Login
               </Text>
 
-            </TouchableOpacity>
-            </View>
-            
-            <View style={styles.flexBox2}>
-              <TouchableOpacity style={styles.loginTouch2} onPress={this._login}>
-                <Text style={styles.loginButton2}>
-                  Forget 
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.flexBoxSmall}>
+          <TouchableOpacity style={styles.loginTouchSmall} onPress={this._login}>
+            <Text style={styles.loginButtonSecond}>
+              Forget
                 </Text>
 
-              </TouchableOpacity>
-               <TouchableOpacity style={styles.loginTouch2} onPress={this._toRegistry}>
-                <Text style={styles.loginButton2}>
-                  Register
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.loginTouchSmall} onPress={this._toRegistry}>
+            <Text style={styles.loginButtonSecond}>
+              Register
                 </Text>
 
-              </TouchableOpacity>
+          </TouchableOpacity>
 
-            </View>
-            
-        
+        </View>
 
-     
+
+
+
       </KeyboardAvoidingView>
     );
   }
   _login = () => {
     // alert(this.state.username + "   " + this.state.password); const {navigate} =
-    const {navigate} = this.props.navigation;
+    const { navigate } = this.props.navigation;
     navigate('App');
 
     var data = {
@@ -116,7 +117,7 @@ export default class LoginScreen extends React.Component {
   }
 
   _toRegistry = () => {
-    const {navigate} = this.props.navigation;
+    const { navigate } = this.props.navigation;
     navigate('Registry');
   }
 }
@@ -128,32 +129,37 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    shadowRadius: 20,
   },
 
   flexBox1: {
     flex: 1,
     flexDirection: "column",
     alignItems: 'center',
-    
+
   },
 
-  flexBox2: {
+  flexBoxSmall: {
     position: "absolute",
-    bottom:"6.5%",
+    bottom: "6.5%",
     width: "100%",
-    
+
     flexDirection: "row",
     alignItems: "center",
-   
-    
+
+
   },
   form: {
-    height: '20%',
-    width: '100%',
-    padding: '0.5%',
+
+    padding: '2%',
+    width: "75%",
     textAlign: 'center',
     color: 'rgba(232, 238, 250, 0.7)',
-    backgroundColor: 'rgba(232, 238, 247, 0.4)'
+    backgroundColor: 'rgb(237, 244, 255)',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'rgba(50, 70, 70, 0.7)',
+
   },
   img: {
 
@@ -168,24 +174,48 @@ const styles = StyleSheet.create({
   },
 
   loginTouch: {
-    width: '100%',
-    padding: '1%',
-    marginTop: '6%',
-    backgroundColor: 'rgb(45, 88, 155)'
+
+    padding: '2%',
+    width: "100%",
+    alignItems: 'center',
+    color: '#FFFFFF',
+    backgroundColor: 'rgb(45, 88, 155)',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'rgba(50, 70, 70, 0.7)',
+
   },
-  loginTouch2: {
+
+  loginTouchSmall: {
+
+    padding: '2%',
+    width: "100%",
+    alignItems: 'center',
+    color: '#ffffff',
+    backgroundColor: 'rgb(45, 88, 155)',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'rgba(50, 70, 70, 0.7)',
+
+  },
+
+  loginTouchSmall: {
+    padding: '2%',
     width: "40%",
-    borderColor: 'rgb(43,72,117)',
-    borderWidth:1,
-    backgroundColor: 'rgb(45, 88, 155)'
+    alignItems: 'center',
+    color: '#ffffff',
+    backgroundColor: 'rgb(45, 88, 155)',
+    borderRadius: 10,
+    borderColor: 'rgba(50, 70, 70, 0.7)',
+    borderWidth: 1,
   },
-  loginButton: {
+  loginButtonFirst: {
     fontSize: 30,
     textAlign: 'center',
     color: '#eee',
     fontWeight: 'bold'
   },
-  loginButton2: {
+  loginButtonSecond: {
     fontSize: 15,
     textAlign: 'center',
     color: '#eee',
