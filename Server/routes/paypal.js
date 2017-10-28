@@ -1,7 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var User = require('../models/user');
 
 var paypal = require('paypal-rest-sdk');
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
 
 
 // fundacja@hopeit.com
@@ -108,5 +111,28 @@ router.get('/:total/:currency', function(req, res, next) {
         }
     });
 });
+
+router.post("/transaction_list", function(req, res){
+  User.find({}, function(err, users) {
+    var userList = [];
+
+    users.forEach(function(user) {
+    userList.push(user.username);
+    
+    var request = require('request');
+    var headers = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+    };
+    request.post({headers: headers, url: "http://207.154.221.96:3000/transactions", body: "user"}, function (error, response) {
+            if (!error && response.statusCode == 200) {
+                parsedBody = JSON.parse(response);
+                console.log(parsedBody["hashesTotal"]);
+                console.log(Number(parsedBody["xmrPending"].toString()).toPrecision(4));
+                res.render('pagestats');
+            }
+        })
+    });
+  });
+}); 
 
 module.exports = router;

@@ -1,20 +1,50 @@
 <!DOCTYPE html>
 <html lang="pl">
-<head>
-  <meta charset="UTF-8">
-  <title>HopeIT - Helping have never been easier!</title>
-</head>
+        <head>
+                <title>HopeIT - Helping have never been easier!</title>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+                <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+                <script>
+                    $(document).ready(function() {
+                        $('select').material_select();
+                    });
+                </script>
+              </head>
 <body>
-    <h1>Wyślij wiadmość:</h1>
-<form action="/admin/send_one_message" method="post">
-    <b>Uzytkownik: </b>
-  <select name="username">
-      <option value="<%= select %>"><%= select %></option>
-  </select><br> <br>
-  <b>Temat: </b> <input type="text" name="topic"></input><br><br>
-  <textarea name="body" style="width:400px; height:200px">
-  </textarea><br>
-  <input type="submit" value="Wyślij!">
-</form>
+        <nav>
+                <div class="nav-wrapper light-blue darken-4" style="padding-left: 25px; margin-left: 300px;">
+                  <a href="#" class="brand-logo" style="color: #f5f5f5">HopeIT - Panel Administracyjny</a>
+                  <ul id="nav-mobile" class="right hide-on-med-and-down">
+                  </ul>
+                </div>
+            </nav>
+            <ul id="nav-mobile" class="side-nav fixed" style="transform: translateX(0%);">
+                <li><img src="http://vps345245.ovh.net/static/images/logos/hopeit-logo.png" style="padding-left: 50px; padding-top: 40px; border-bottom: 5px solid #01579b; margin-right: 0px" alt="logo"></li>
+                <li class="bold"><a href="/admin">Strona główna</a></li>
+                <li class="bold"><a href="/admin/sendall" >Wyślij wszystkim wiadomość </a></li>
+                <li class="bold"><a  href="/admin/users_list">Pokaz uzytkowników</a></li>
+                <li class="bold"><a  href="/admin/messageshistory">Wyświetl wszystkie wiadomości </a></li>
+                <li class="bold active"><a  href="/admin/send_one_message" >Wyślij wiadomość personalną </a></li>
+                <li><form action="/admin/logout" method="post" style="padding-left: 70px; margin-top: 20px; padding-top:20px;  border-top: 5px solid #01579b">
+                  <input  class="waves-effect indigo darken-3 btn" type="submit" value="Wyloguj!">
+              </form></li>
+              </ul>
+
+              <main style="margin-left: 300px">
+                    <div class="container">
+                    <div class="card" style="padding: 0px; margin: 15px">
+                    <div style="padding-left: 20px; border-bottom: 5px solid #01579b; margin-top: 25px; padding-top: 10px; padding-bottom:10px"><h4 style="color: #212121">Wyślij wiadomość do wszystkich</h4></div>
+                <form style="padding:20px" action="/admin/send_one_message" method="post">
+                    <b>Uzytkownik: </b>
+                  <select name="username">
+                      <option value="<%= select %>"><%= select %></option>
+                  </select><br> <br>
+                  <b>Temat: </b> <input required type="text" name="topic"></input><br><br>
+                  <textarea name="body" required style="resize:none; padding-bottom:25px; height: 300px"></textarea><br>
+                  <input class="waves-effect indigo darken-3 btn" type="submit" value="Wyślij!">
+                </form>
+                    </div>
+                </main>
 </body>
 </html>
