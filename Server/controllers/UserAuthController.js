@@ -17,10 +17,10 @@ userController.doRegister = function(req, res){
                             nickname : inputData.nick, }), inputData.password, function(err, user){
                                 if(err){
                                     console.log(err);
-                                    return res.json({register : 'fail'});
+                                    return res.json({register : false});
                                 }
                                 console.log('dobrze');
-                                res.json({register : 'good'});
+                                res.json({register : true});
 
                             });
 };
@@ -31,3 +31,10 @@ userController.doLogin = function(req, res){
         res.redirect('/user');
     });
 }
+
+userController.logout = function(req, res){
+    req.logout();
+    res.json({loggedout : true});
+};
+
+module.exports = userController;
