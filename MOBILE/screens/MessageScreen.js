@@ -2,7 +2,7 @@ import React from 'react';
 import { ExpoConfigView } from '@expo/samples';
 
 export default class SettingsScreen extends React.Component {
-  static navigationOptions = { title: 'Settings', header: null };
+  static navigationOptions = { title: 'Messages', header: null };
 
   render() {
     /* Go ahead and delete ExpoConfigView and replace it with your
