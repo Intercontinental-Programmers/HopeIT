@@ -20,6 +20,8 @@ router.post('/get_messages', function(req, res){
                 messageList.push(msg);
             });
 
+            console.log(messageList);
+
             res.json(messageList);
 
         });
