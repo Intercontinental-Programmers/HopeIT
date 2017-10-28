@@ -23,7 +23,6 @@ userController.doRegister = function(req, res){
 };
 
 userController.doLogin = function(req, res){
-    console.log(req.body);
     passport.authenticate('user')(req, res, function(){
         console.log('Zalogowano');
         res.json(req.user);
