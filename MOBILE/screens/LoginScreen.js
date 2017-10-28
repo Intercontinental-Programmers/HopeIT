@@ -72,7 +72,7 @@ export default class LoginScreen extends React.Component {
                 </Text>
 
               </TouchableOpacity>
-               <TouchableOpacity style={styles.loginTouch2} onPress={this._login}>
+               <TouchableOpacity style={styles.loginTouch2} onPress={this._toRegistry}>
                 <Text style={styles.loginButton2}>
                   Register
                 </Text>
@@ -100,32 +100,38 @@ export default class LoginScreen extends React.Component {
       desc: "hurr durr"
     }
     console.log(JSON.stringify(data));
-    fetch('http://207.154.221.96:3000/paypal', {
-      method: 'POST',
-      body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json'
-        }
+    // fetch('http://207.154.221.96:3000/paypal', {
+    //   method: 'POST',
+    //   body: JSON.stringify(data),
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     }
 
-      })
-      .then(response => response.json())
-      .then(response => {
-        alert(JSON.stringify(response.id));
-      })
-      .done();
+    //   })
+    //   .then(response => response.json())
+    //   .then(response => {
+    //     alert(JSON.stringify(response.id));
+    //   })
+    //   .done();
+  }
+
+  _toRegistry = () => {
+    const {navigate} = this.props.navigation;
+    navigate('Registry');
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     backgroundColor: 'rgb(43, 72, 117)',
-   
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   flexBox1: {
-    flex: 12,
+    flex: 1,
     flexDirection: "column",
     alignItems: 'center',
     

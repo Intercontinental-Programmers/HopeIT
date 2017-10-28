@@ -4,6 +4,7 @@ import { StackNavigator } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
 import LoginScreen from '../screens/LoginScreen';
+import RegistryScreen from '../screens/RegistryScreen';
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
 
 const RootStackNavigator = StackNavigator(
@@ -14,6 +15,9 @@ const RootStackNavigator = StackNavigator(
     },
     App: {
       screen: MainTabNavigator,
+    },
+    Registry: {
+      screen: RegistryScreen,
     },
   },
   {
