@@ -22,8 +22,8 @@ export default class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "aaaaaa@aa.aa",
-      password: "bbbbbbbb"
+      username: "okkindel@okkindel",
+      password: "hajduk"
     }
   }
 
@@ -43,7 +43,7 @@ export default class LoginScreen extends React.Component {
 
           <TextInput
             style={styles.form}
-            placeholder="username"
+            placeholder="e-mail"
             returnKeyType="go"
             onChangeText={(username) => this.setState({ username })}
             value={this.state.username} />

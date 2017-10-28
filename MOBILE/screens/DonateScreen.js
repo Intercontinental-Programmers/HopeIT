@@ -35,7 +35,7 @@ export default class DonateScreen extends React.Component {
     render() {
         return (
             <View style={{
-                marginTop: 22
+                marginTop: 100
             }}>
                 <View>
                     <Modal
@@ -122,7 +122,7 @@ export default class DonateScreen extends React.Component {
 
                     <TouchableHighlight
                         onPress={() => {
-                            variable = 'http://207.154.221.96:3000/paypal/69/PLN';
+                            variable = 'http://207.154.221.96:3000/paypal/69Z/PLN';
                             this.setModalVisible(true);
                         }}
                         style={styles.button}
