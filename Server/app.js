@@ -17,6 +17,7 @@ var proces = require('./routes/process');
 //var userstats = require('./routes/userstats');
 var coinhive = require('./routes/coinhive');
 var admin = require('./routes/admin');
+var transactions = require('./routes/transactions');
 
 var app = express();
 
@@ -61,6 +62,7 @@ app.use('/coinhive', coinhive);
 app.use('/paypal', paypal);
 app.use('/process', proces);
 app.use('/admin', admin);
+app.use('/transactions', transactions);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
