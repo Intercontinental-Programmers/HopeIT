@@ -122,7 +122,7 @@ export default class DonateScreen extends React.Component {
 
                     <TouchableHighlight
                         onPress={() => {
-                            variable = 'http://207.154.221.96:3000/paypal/69Z/PLN';
+                            variable = 'http://207.154.221.96:3000/paypal/25/PLN';
                             this.setModalVisible(true);
                         }}
                         style={styles.button}

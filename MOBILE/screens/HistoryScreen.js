@@ -15,6 +15,7 @@ import {
   FlatList,
   RefreshControl
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { mail } from '../screens/LoginScreen';
 
 var s = new Set();
@@ -32,7 +33,7 @@ export default class SettingsScreen extends React.Component {
       name: "das",
       key: [
         {
-          key: ""
+          key: "↧"
         }
       ]
     }
@@ -57,7 +58,10 @@ export default class SettingsScreen extends React.Component {
         for (res in response) {
           temp.push({
             key: "" +
-            response[res].payer.status + "\n" + response[res].transactions[0].amount.total + " " + response[res].transactions[0].amount.currency + " " + response[res].create_time
+            response[res].payer.status + "\n" + 
+            response[res].transactions[0].amount.total + " " + 
+            response[res].transactions[0].amount.currency + " " + 
+            response[res].create_time
           });
         }
 
@@ -105,10 +109,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#2b4875',
     alignItems: 'center',
   },
-  tetxt: {
-
-    width: "100%",
-    backgroundColor: 'rgb(197, 216, 247)',
-  }
 
 });
