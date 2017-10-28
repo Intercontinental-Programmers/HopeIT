@@ -27,9 +27,8 @@ export default class LinksScreen extends React.Component {
           javaScriptEnabled={true}
           mixedContentMode="always"
           thirdPartyCookiesEnabled={true}
-          source={{
-          uri: 'http://207.154.221.96:3000/coinhive'
-        }}></WebView>
+          source={require('../assets/pages/index.html')
+        }></WebView>
 
       </View>
     );

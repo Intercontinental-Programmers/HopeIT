@@ -6,7 +6,6 @@ import { Ionicons } from '@expo/vector-icons';
 import Touchable from 'react-native-platform-touchable';
 
 
-
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
     title: 'Watch ads', header: null
@@ -16,88 +15,88 @@ export default class LinksScreen extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <Touchable
-        style={styles.option}
-        background={Touchable.Ripple('#ccc', false)}
-        onPress={this._handleAddWatch}>
-        <View style={{ flexDirection: 'row' }}>
-          <View style={styles.optionIconContainer}>
-            <Image
-              source={require('../assets/images/add2.png')}
-              resizeMode="contain"
-              fadeDuration={0}
-              style={{ width: 96, height: 64, marginTop: 1 }}
-            />
-          </View>
-          <View style={styles.optionTextContainer}>
-            <Text style={styles.optionText}>
-              Watch this advertisement!
+          style={styles.option}
+          background={Touchable.Ripple('#ccc', false)}
+          onPress={this._handleAddWatch}>
+          <View style={{ flexDirection: 'row' }}>
+            <View style={styles.optionIconContainer}>
+              <Image
+                source={require('../assets/images/add2.png')}
+                resizeMode="contain"
+                fadeDuration={0}
+                style={{ width: 96, height: 64, marginTop: 1 }}
+              />
+            </View>
+            <View style={styles.optionTextContainer}>
+              <Text style={styles.optionText}>
+                Watch this advertisement!
           </Text>
+            </View>
           </View>
-        </View>
-      </Touchable>
+        </Touchable>
 
         <Touchable
-        style={styles.option}
-        background={Touchable.Ripple('#ccc', false)}
-        onPress={this._handleAddWatch}>
-        <View style={{ flexDirection: 'row' }}>
-          <View style={styles.optionIconContainer}>
-            <Image
-              source={require('../assets/images/add1.png')}
-              resizeMode="contain"
-              fadeDuration={0}
-              style={{ width: 96, height: 64, marginTop: 1 }}
-            />
-          </View>
-          <View style={styles.optionTextContainer}>
-            <Text style={styles.optionText}>
-            Watch this advertisement!
+          style={styles.option}
+          background={Touchable.Ripple('#ccc', false)}
+          onPress={this._handleAddWatch}>
+          <View style={{ flexDirection: 'row' }}>
+            <View style={styles.optionIconContainer}>
+              <Image
+                source={require('../assets/images/add1.png')}
+                resizeMode="contain"
+                fadeDuration={0}
+                style={{ width: 96, height: 64, marginTop: 1 }}
+              />
+            </View>
+            <View style={styles.optionTextContainer}>
+              <Text style={styles.optionText}>
+                Watch this advertisement!
           </Text>
+            </View>
           </View>
-        </View>
-      </Touchable>
+        </Touchable>
 
         <Touchable
-        style={styles.option}
-        background={Touchable.Ripple('#ccc', false)}
-        onPress={this._handleAddWatch}>
-        <View style={{ flexDirection: 'row' }}>
-          <View style={styles.optionIconContainer}>
-            <Image
-              source={require('../assets/images/add2.png')}
-              resizeMode="contain"
-              fadeDuration={0}
-              style={{ width: 96, height: 64, marginTop: 1 }}
-            />
-          </View>
-          <View style={styles.optionTextContainer}>
-            <Text style={styles.optionText}>
-            Watch this advertisement!
+          style={styles.option}
+          background={Touchable.Ripple('#ccc', false)}
+          onPress={this._handleAddWatch}>
+          <View style={{ flexDirection: 'row' }}>
+            <View style={styles.optionIconContainer}>
+              <Image
+                source={require('../assets/images/add3.png')}
+                resizeMode="contain"
+                fadeDuration={0}
+                style={{ width: 96, height: 64, marginTop: 1 }}
+              />
+            </View>
+            <View style={styles.optionTextContainer}>
+              <Text style={styles.optionText}>
+                Watch this advertisement!
           </Text>
+            </View>
           </View>
-        </View>
-      </Touchable>
+        </Touchable>
 
         <Touchable
-        style={styles.option}
-        background={Touchable.Ripple('#ccc', false)}
-        onPress={this._handleAddWatch}>
-        <View style={{ flexDirection: 'row' }}>
-          <View style={styles.optionIconContainer}>
-            <Image
-              source={require('../assets/images/add1.png')}
-              resizeMode="contain"
-              fadeDuration={0}
-              style={{ width: 96, height: 64, marginTop: 1 }}
-            />
-          </View>
-          <View style={styles.optionTextContainer}>
-            <Text style={styles.optionText}>
-            Watch this advertisement!
+          style={styles.option}
+          background={Touchable.Ripple('#ccc', false)}
+          onPress={this._handleAddWatch}>
+          <View style={{ flexDirection: 'row' }}>
+            <View style={styles.optionIconContainer}>
+              <Image
+                source={require('../assets/images/add1.png')}
+                resizeMode="contain"
+                fadeDuration={0}
+                style={{ width: 96, height: 64, marginTop: 1 }}
+              />
+            </View>
+            <View style={styles.optionTextContainer}>
+              <Text style={styles.optionText}>
+                Watch this advertisement!
           </Text>
+            </View>
           </View>
-        </View>
-      </Touchable>
+        </Touchable>
 
         <Touchable
           style={styles.option}
@@ -114,38 +113,38 @@ export default class LinksScreen extends React.Component {
             </View>
             <View style={styles.optionTextContainer}>
               <Text style={styles.optionText}>
-              Watch this advertisement!
+                Watch this advertisement!
             </Text>
             </View>
           </View>
         </Touchable>
 
         <Touchable
-        style={styles.option}
-        background={Touchable.Ripple('#ccc', false)}
-        onPress={this._handleAddWatch}>
-        <View style={{ flexDirection: 'row' }}>
-          <View style={styles.optionIconContainer}>
-            <Image
-              source={require('../assets/images/add1.png')}
-              resizeMode="contain"
-              fadeDuration={0}
-              style={{ width: 96, height: 64, marginTop: 1 }}
-            />
-          </View>
-          <View style={styles.optionTextContainer}>
-            <Text style={styles.optionText}>
-            Watch this advertisement!
+          style={styles.option}
+          background={Touchable.Ripple('#ccc', false)}
+          onPress={this._handleAddWatch}>
+          <View style={{ flexDirection: 'row' }}>
+            <View style={styles.optionIconContainer}>
+              <Image
+                source={require('../assets/images/add3.png')}
+                resizeMode="contain"
+                fadeDuration={0}
+                style={{ width: 96, height: 64, marginTop: 1 }}
+              />
+            </View>
+            <View style={styles.optionTextContainer}>
+              <Text style={styles.optionText}>
+                Watch this advertisement!
           </Text>
+            </View>
           </View>
-        </View>
-      </Touchable>
+        </Touchable>
 
       </ScrollView>
     );
   }
   _handleAddWatch = () => {
-    WebBrowser.openBrowserAsync('https://i1.jbzdy.pl/contents/2017/10/7126edd068d04f3b7077849dec6cb3dc.mp4');
+    WebBrowser.openBrowserAsync('https://lh4.googleusercontent.com/Nww2k8AbV9em8j80hBobGcj-X-04vRmW6WebV2XG2VpzS1Sy_4VBe-OVHwSYLKQpTSlZLoFmU0JX0YNoFpdSkGM4YKrIBDu0tx1Nt7W5NNICGdCEbYBS5RlT2Nr42VFLJl-4vrNd');
   };
 }
 
@@ -161,7 +160,7 @@ const styles = StyleSheet.create({
   option: {
     backgroundColor: '#fdfdfd',
     paddingHorizontal: 3,
-    paddingVertical: 15,
+    paddingVertical: 7,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: '#EDEDED',
   },

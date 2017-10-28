@@ -39,11 +39,7 @@ export default class RegistryScreen extends React.Component {
         return (
 
             <KeyboardAvoidingView behavior="padding" style={styles.container}>
-                <View style={styles.flexBox1}>
-
-                    <Text style={styles.text1}>
-                        Registration
-                    </Text>
+                <View style={styles.flexBox}>
 
                     <TextInput
                         style={styles.form}
@@ -150,25 +146,18 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         alignItems: 'center',
         justifyContent: 'center',
-        shadowColor: '#fff',
         shadowOpacity: 0.2,
-        shadowRadius: 20
     },
-    flexBox1: {
+    flexBox: {
         flex: 0.85,
         width: "85%",
         flexDirection: "column",
         alignItems: 'center',
         backgroundColor: 'rgba(244, 246, 249, 0.9)',
         justifyContent: 'center',
-        shadowColor: '#fff',
-        shadowOffset: {
-            width: 0,
-            height: 2
-        },
-        shadowOpacity: 0.4,
-        shadowRadius: 7
+        borderRadius: 10,
     },
+
     text1: {
         fontSize: 30,
         marginBottom: 20,
@@ -201,6 +190,7 @@ const styles = StyleSheet.create({
         borderBottomColor: '#EDEDED'
     },
     optionText: {
+        position:'relative',
         paddingHorizontal: 50,
         paddingVertical: 23,
         borderBottomWidth: StyleSheet.hairlineWidth,
@@ -210,7 +200,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         textAlign: 'center',
         color: '#eee',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
 
     loginTouch: {
@@ -218,6 +208,7 @@ const styles = StyleSheet.create({
         width: '50%',
         padding: '1%',
         marginTop: '6%',
-        backgroundColor: 'rgb(43, 72, 117)'
+        backgroundColor: 'rgb(43, 72, 117)',
+        borderRadius: 10 
     }
 });
