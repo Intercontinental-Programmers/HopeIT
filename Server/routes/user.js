@@ -20,7 +20,7 @@ router.post('/get_messages', function(req, res){
                 messageList.push(msg);
             });
 
-            res.json({messages : messageList});
+            res.json(messageList);
 
         });
 });
