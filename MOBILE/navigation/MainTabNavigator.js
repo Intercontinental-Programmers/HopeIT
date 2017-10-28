@@ -10,7 +10,7 @@ import HomeScreen from '../screens/HomeScreen';
 import DonateScreen from '../screens/DonateScreen';
 import LinksScreen from '../screens/LinksScreen';
 import MessageScreen from '../screens/MessageScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import HistoryScreen from '../screens/HistoryScreen';
 
 
 export default TabNavigator(
@@ -27,8 +27,8 @@ export default TabNavigator(
     Message: {
       screen: MessageScreen,
     },
-    Settings: {
-      screen: SettingsScreen,
+    History: {
+      screen: HistoryScreen,
     },
   },
   {
@@ -57,10 +57,10 @@ export default TabNavigator(
               ? `ios-chatboxes${focused ? '' : '-outline'}`
               : 'md-chatboxes';
             break;
-          case 'Settings':
+          case 'History':
             iconName = Platform.OS === 'ios'
-              ? `ios-options${focused ? '' : '-outline'}`
-              : 'md-options';
+              ? `ios-refresh${focused ? '' : '-outline'}`
+              : 'md-refresh';
         }
         return (
           <Ionicons
