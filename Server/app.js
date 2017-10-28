@@ -11,14 +11,12 @@ mongoose.Promise = global.Promise;
 var Admin = require('./models/admin');
 var index = require('./routes/index');
 var users = require('./routes/users');
+var paypal = require('./routes/paypal');
+var proces = require('./routes/process');
 //var pagestats = require('./routes/pagestats');
 //var userstats = require('./routes/userstats');
 var coinhive = require('./routes/coinhive');
 var admin = require('./routes/admin');
-
-
-
-var paypal = require('./routes/paypal')
 
 var app = express();
 
@@ -61,6 +59,7 @@ app.use('/users', users);
 //app.use('/userstats', userstats);
 app.use('/coinhive', coinhive);
 app.use('/paypal', paypal);
+app.use('/process', proces);
 app.use('/admin', admin);
 
 // catch 404 and forward to error handler
