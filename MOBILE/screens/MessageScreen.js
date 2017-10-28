@@ -19,7 +19,7 @@ export default class SettingsScreen extends React.Component {
           user: {
             _id: 2,
             name: 'React Native',
-            avatar: 'https://facebook.github.io/react/img/logo_og.png',
+            avatar: require('../assets/images/logo.png'),
           },
         },
       ],

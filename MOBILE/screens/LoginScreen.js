@@ -67,24 +67,24 @@ export default class LoginScreen extends React.Component {
 
           <View style={styles.flexBoxSmall}>
 
-          <TouchableOpacity style={styles.loginTouchSmallLeft} onPress={this._toRegistry}>
-            <Text style={styles.loginButtonSmall}>
-              Register
+            <TouchableOpacity style={styles.loginTouchSmallLeft} onPress={this._toRegistry}>
+              <Text style={styles.loginButtonSmall}>
+                Register
                 </Text>
 
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.loginTouchSmallRight} onPress={this._login}>
-            <Text style={styles.loginButtonSmall}>
-              Guest
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.loginTouchSmallRight} onPress={() => {
+              const { navigate } = this.props.navigation;
+              navigate('App');
+            }}>
+              <Text style={styles.loginButtonSmall}>
+                Guest
                 </Text>
 
-          </TouchableOpacity>
+            </TouchableOpacity>
 
+          </View>
         </View>
-</View>
-
-
-
       </KeyboardAvoidingView>
     );
   }
@@ -94,24 +94,21 @@ export default class LoginScreen extends React.Component {
     navigate('App');
 
     var data = {
-      client_id: "Adt3bLhhhvutjmFRlEyiImUIEEjVPGlxFM_1Do_hQBo-wroVDNrSTtbHUjqyf_dIM8Y1rmEcCQZh6TKa",
-      client_secret: "EFJqsYD4cERumo4gOHU79Igdv1DaQnTTAgOgZu1Aob9i8LUYsveEVfDGml7vta7Ux0xJvQpdko1FHWGq",
-      total: 69,
-      currency: "PLN",
-      desc: "hurr durr"
+      username: this.state.username,
+      password: this.state.password
     }
-    console.log(JSON.stringify(data));
-    fetch('http://207.154.221.96:3000/paypal', {
+
+    fetch('http://207.154.221.96:3000/user/login', {
       method: 'POST',
       body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json'
-        }
+      headers: {
+        'Content-Type': 'application/json'
+      }
 
-      })
+    })
       .then(response => response.json())
       .then(response => {
-        alert(JSON.stringify(response.id));
+        alert(JSON.stringify(response));
       })
       .done();
   }
@@ -164,7 +161,7 @@ const styles = StyleSheet.create({
 
   flexBoxSmall: {
     position: "absolute",
-    bottom:"6.5%",
+    bottom: "6.5%",
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
@@ -212,7 +209,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold'
   },
-  
+
   loginButtonSmall: {
     fontSize: 15,
     textAlign: 'center',
