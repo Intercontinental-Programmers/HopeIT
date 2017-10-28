@@ -31,6 +31,7 @@ export default class DonateScreen extends React.Component {
     render() {
         return (
             <View style={{ marginTop: 22 }}>
+            <View>
                 <Modal
                     animationType="slide"
                     transparent={false}
@@ -51,7 +52,8 @@ export default class DonateScreen extends React.Component {
                 </Modal>
 
                 <TouchableHighlight onPress={() => { this.setModalVisible(true) }}
-                    style={styles.button}>
+                    style={styles.button}
+                    underlayColor='#2b4875'>
                     <Image
                         source={require('../assets/images/dotpay.png')}
                         resizeMode="contain"
@@ -59,7 +61,38 @@ export default class DonateScreen extends React.Component {
                         style={{ width: 96, height: 69, marginTop: 1 }}
                     />
 
-                </TouchableHighlight>
+                </TouchableHighlight></View><View style={{marginTop: 15}}>
+
+                <Modal
+                    animationType="slide"
+                    transparent={false}
+                    visible={this.state.modalVisible}
+                    onRequestClose={() => { !this.setModalVisible(false) }}
+                >
+                    <WebView
+                        source={{ uri: 'https://ssl.dotpay.pl/test_payment/?id=726300&kwota=10&opis=Test' }}
+                        style={{ marginTop: 2 }}
+                    />
+
+                    <Button style={styles.comeback}
+                        onPress={() => { !this.setModalVisible(false) }}
+                        title="CLOSE"
+                        color="#BBBBBB"
+                        accessibilityLabel="Learn more about this purple button"
+                    />
+                </Modal>
+
+                <TouchableHighlight onPress={() => { this.setModalVisible(true) }}
+                    style={styles.button}
+                    underlayColor='#2b4875'>
+                    <Image
+                        source={require('../assets/images/paypal.png')}
+                        resizeMode="contain"
+                        fadeDuration={0}
+                        style={{ width: 96, height: 69, marginTop: 1 }}
+                    />
+
+                </TouchableHighlight></View>
 
             </View>
         );

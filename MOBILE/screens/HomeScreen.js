@@ -9,7 +9,7 @@ import Touchable from 'react-native-platform-touchable';
 
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
-    title: 'Watch ads', header: null
+    title: 'Home', header: null
   };
 
   render() {

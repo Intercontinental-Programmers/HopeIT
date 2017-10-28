@@ -5,11 +5,13 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 
 import Colors from '../constants/Colors';
 
-import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import HomeScreen from '../screens/HomeScreen';
 import DonateScreen from '../screens/DonateScreen';
+import LinksScreen from '../screens/LinksScreen';
+import MessageScreen from '../screens/MessageScreen';
+import SettingsScreen from '../screens/SettingsScreen';
+
 
 export default TabNavigator(
   {
@@ -21,6 +23,9 @@ export default TabNavigator(
     },
     Links: {
       screen: LinksScreen,
+    },
+    Message: {
+      screen: MessageScreen,
     },
     Settings: {
       screen: SettingsScreen,
@@ -46,6 +51,11 @@ export default TabNavigator(
             iconName = Platform.OS === 'ios'
               ? `ios-link${focused ? '' : '-outline'}`
               : 'md-link';
+            break;
+          case 'Message':
+            iconName = Platform.OS === 'ios'
+              ? `ios-chatboxes${focused ? '' : '-outline'}`
+              : 'md-chatboxes';
             break;
           case 'Settings':
             iconName = Platform.OS === 'ios'
@@ -73,8 +83,10 @@ export default TabNavigator(
       },
       style: {
         backgroundColor: '#2b4875',
+        height: 60,
       },
+      
     }
-    
+
   }
 );
