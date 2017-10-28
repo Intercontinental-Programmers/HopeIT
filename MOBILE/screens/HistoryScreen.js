@@ -13,63 +13,44 @@ import {
   KeyboardAvoidingView,
   ListView
 } from 'react-native';
-
+import {mail} from '../screens/LoginScreen';
 
 export default class SettingsScreen extends React.Component {
   static navigationOptions = { title: 'History', header: null };
 
-  state = {
-    names: [
-      {
-        id: 0,
-        name: 'Adiran Mucha',
-      },
-      {
-        id: 1,
-        name: 'Mateusz Walczak',
-      },
-      {
-        id: 2,
-        name: 'Maciej Dziadyk',
-      },
-      {
-        id: 3,
-        name: 'Michał Treter',
+  constructor() {
+    super();
+    data = {
+      user : mail,
+    }
+    
+    fetch('http://207.154.221.96:3000/transactions', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
       }
-    ]
+
+    })
+      .then(response => response.json())
+      .then(response => {
+        alert(JSON.stringify(response));
+      })
+      .done();
+
+
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state = {
+      dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+    };
   }
-  alertItemName = (item) => {
-    alert(item.name)
-  }
+
   render() {
     return (
-      <View>
-        {
-          this.state.names.map((item, index) => (
-            <TouchableOpacity
-              key={item.id}
-              style={styles.container}
-              onPress={() => this.alertItemName(item)}>
-
-              <Text style={styles.text}>
-                {item.name}
-              </Text>
-            </TouchableOpacity>
-          ))
-        }
-      </View>
-    )
+      <ListView
+        dataSource={this.state.dataSource}
+        renderRow={(rowData) => <Text>{rowData}</Text>}
+      />
+    );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 30,
-    marginTop: 10,
-    backgroundColor: '#2b4875',
-    alignItems: 'center',
-  },
-  text: {
-    color: '#fff'
-  }
-})

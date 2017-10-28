@@ -25,14 +25,13 @@ export default class RegistryScreen extends React.Component {
         super(props);
 
         this.state = {
-            
+
             username: "",
             password: "",
             passwordConf: "",
             nickName: "",
             firstName: "",
-            secondName: "",
-            
+            secondName: ""
         }
     }
 
@@ -73,7 +72,6 @@ export default class RegistryScreen extends React.Component {
                     <TextInput/>
                     <TextInput
                         style={styles.form}
-                        secureTextEntry={true}
                         placeholder="Nickname"
                         returnKeyType="go"
                         onChangeText={(nickName) => this.setState({nickName})}
@@ -82,7 +80,6 @@ export default class RegistryScreen extends React.Component {
 
                     <TextInput
                         style={styles.form}
-                        secureTextEntry={true}
                         placeholder="First name"
                         returnKeyType="go"
                         onChangeText={(firstName) => this.setState({firstName})}
@@ -91,13 +88,11 @@ export default class RegistryScreen extends React.Component {
 
                     <TextInput
                         style={styles.form}
-                        secureTextEntry={true}
                         placeholder="Second name"
                         returnKeyType="go"
                         onChangeText={(secondName) => this.setState({secondName})}
                         value={this.state.secondName}/>
                     <TextInput/>
-
 
                     <TouchableOpacity style={styles.loginTouch} onPress={this._register}>
                         <Text style={styles.loginButton}>
@@ -113,33 +108,36 @@ export default class RegistryScreen extends React.Component {
     }
 
     _register = () => {
-    
+
         var data = {
-          username: this.state.username,
-          password: this.state.password,
-          nickName: this.state.nickName,
-          firstName: this.state.firstName,
-          secondName: this.state.secondName,
+            username: this.state.username,
+            password: this.state.password,
+            firstname: this.state.firstName,
+            surname: this.state.firstName,
+            nick: this.state.nickName
         }
         console.log(JSON.stringify(data));
         fetch('http://207.154.221.96:3000/user/register', {
-          method: 'POST',
-          body: JSON.stringify(data),
-            headers: {
-              'Content-Type': 'application/json'
-            }
-    
-          })
-          .then(response => response.json())
-          .then(response => {
-              
-            alert(JSON.stringify(response));
-          })
-          .done();
-      }
-    
-     
-    
+            method: 'POST',
+            body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+
+            })
+            .then(response => response.json())
+            .then(response => {
+                if (JSON.parse(response.register) == true) {
+                    //alert(JSON.stringify(response));
+                    const {navigate} = this.props.navigation;
+                    navigate('Main');
+                }
+                else{
+                    alert("Rejestracja nie powiodło się!");
+                }
+            })
+            .done();
+    }
 
 }
 
@@ -154,9 +152,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         shadowColor: '#fff',
         shadowOpacity: 0.2,
-        shadowRadius: 20,
-       
-        
+        shadowRadius: 20
     },
     flexBox1: {
         flex: 0.85,
@@ -166,11 +162,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(244, 246, 249, 0.9)',
         justifyContent: 'center',
         shadowColor: '#fff',
-        shadowOffset: { width: 0, height: 2 },
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
         shadowOpacity: 0.4,
-        shadowRadius: 7,
-        
-        
+        shadowRadius: 7
     },
     text1: {
         fontSize: 30,
@@ -186,12 +183,11 @@ const styles = StyleSheet.create({
         padding: '2%',
         width: "75%",
         textAlign: 'center',
-        color: 'rgba(232, 238, 250, 0.7)',
+        color: 'rgba(30, 30, 30, 0.7)',
         backgroundColor: 'rgb(237, 244, 255)',
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: 'rgba(50, 70, 70, 0.7)',
-
+        borderColor: 'rgba(50, 70, 70, 0.7)'
     },
 
     optionIconContainer: {
@@ -218,7 +214,7 @@ const styles = StyleSheet.create({
     },
 
     loginTouch: {
-        
+
         width: '50%',
         padding: '1%',
         marginTop: '6%',

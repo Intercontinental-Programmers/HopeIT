@@ -15,14 +15,15 @@ import { WebBrowser } from 'expo';
 import RootNavigation from '../navigation/RootNavigation';
 import { StackNavigator } from 'react-navigation';
 
-export default class LoginScreen extends React.Component {
 
+var mail = "";
+export default class LoginScreen extends React.Component {
+  
   constructor(props) {
     super(props);
-
     this.state = {
-      username: "",
-      password: ""
+      username: "aaaaaa@aa.aa",
+      password: "bbbbbbbb"
     }
   }
 
@@ -42,11 +43,10 @@ export default class LoginScreen extends React.Component {
 
           <TextInput
             style={styles.form}
-            secureTextEntry={true}
             placeholder="username"
             returnKeyType="go"
             onChangeText={(username) => this.setState({ username })}
-            value={this.state.password} />
+            value={this.state.username} />
           <TextInput />
 
           <TextInput
@@ -90,12 +90,10 @@ export default class LoginScreen extends React.Component {
   }
   _login = () => {
     // alert(this.state.username + "   " + this.state.password); const {navigate} =
-    const { navigate } = this.props.navigation;
-    navigate('App');
 
     var data = {
       username: this.state.username,
-      password: this.state.password
+      password:  this.state.password,
     }
 
     fetch('http://207.154.221.96:3000/user/login', {
@@ -106,10 +104,27 @@ export default class LoginScreen extends React.Component {
       }
 
     })
-      .then(response => response.json())
       .then(response => {
-        alert(JSON.stringify(response));
+        
+        if(response.ok != false){
+         
+               //alert(response._bodyTesxt.usernamme)
+          //console.log(JSON.parse(response._bodyText).username)
+          //alert(this.state.username)
+          let uset = JSON.parse(response._bodyText).username;
+
+          //console.log(uset);
+          if(uset == this.state.username ){
+            mail = JSON.parse(response._bodyText).username;
+            //alert(LoginScreen.mail);
+            const { navigate } = this.props.navigation;
+            navigate('App');
+          }
+        }else{
+          alert("Złe hasło!")
+        }
       })
+     
       .done();
   }
 
@@ -172,7 +187,7 @@ const styles = StyleSheet.create({
     padding: '2%',
     width: "75%",
     textAlign: 'center',
-    color: 'rgba(232, 238, 250, 0.7)',
+    color: 'rgba(30, 30, 30, 0.8)',
     backgroundColor: 'rgb(237, 244, 255)',
     borderRadius: 10,
     borderWidth: 1,
@@ -216,3 +231,5 @@ const styles = StyleSheet.create({
     color: '#fff',
   }
 });
+
+export {mail}
